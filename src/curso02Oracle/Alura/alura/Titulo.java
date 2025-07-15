@@ -1,8 +1,6 @@
 package curso02Oracle.Alura.alura;
 
-import curso02Oracle.Alura.calculos.Classificavel;
-
-public class Titulo {
+public class Titulo implements Comparable<Titulo>{
     private String nome;
     private int anoDeLancamento;
     private boolean incluidoNoPlano;
@@ -10,12 +8,22 @@ public class Titulo {
     private int totalAvaliacao;
     private int duracaoEmMin;
 
+    public Titulo(String nome, int anoDeLancamneto) {
+        this.nome = nome;
+        this.anoDeLancamento = anoDeLancamneto;
+    }
+
+    // Criando Construtores
+    public String toString(){
+        return this.getNome() + "(" + this.getAnoDeLancamento() + ")";
+    }
+
     // METODO ACESSOR
     public int getTotalAvaliacao(){
         return totalAvaliacao;
     }
 
-    public void setNome(String nome) {
+    public void setNome(String nome, int anoDeLancamneto) {
         this.nome = nome;
     }
 
@@ -43,5 +51,18 @@ public class Titulo {
     }
     public double pegaMedia() {
         return somaDasAvaliacoes/totalAvaliacao;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public int getAnoDeLancamento() {
+        return anoDeLancamento;
+    }
+
+    @Override
+    public int compareTo(Titulo outroTitulo) {
+        return this.getNome().compareTo(outroTitulo.getNome());
     }
 }
